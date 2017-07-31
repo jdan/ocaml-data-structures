@@ -1,3 +1,5 @@
+(* Stack! *)
+
 type 'a t =
   | Empty
   | Item of 'a * 'a t
