@@ -74,3 +74,8 @@ let trie_from_string_list strs =
     | (str, value) :: rest -> inner (insert trie (explode str) value) rest in
 
   inner root strs;;
+
+let age_db = trie_from_string_list [("jordan", 25); ("joe", 13); ("jane", 20)];;
+assert (find age_db (explode "jordan") = Some 25);;
+assert (find age_db (explode "jane") = Some 20);;
+assert (find age_db (explode "jackson") = None);;
