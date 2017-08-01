@@ -16,25 +16,23 @@ assert (trie_from_char_list ['a'] 15 = Trie (None, [('a', Trie (Some 15, []))]))
 let assoc pairs key =
   let rec inner pairs acc = match pairs with
     | [] -> (None, acc)
-    | (k, v as p) :: rest -> if key = k then (Some v, List.append acc rest)
-                             else inner rest (p :: acc)
+    | (k, v) :: rest when k = key -> (Some v, List.append acc rest)
+    | head :: rest -> inner rest (head :: acc)
 
   in inner pairs []
 
-let rec insert trie s value = match trie with Trie (currValue, children) -> (
-  match s with
-    | [] -> Trie (Some value, children)   (* assign our value to the node *)
-    | ch :: rest -> (
-        match assoc children ch with
-          | (None, _) ->
-              (* Prepend a new trie from our string to the children *)
-              Trie (currValue, (ch, trie_from_char_list rest value) :: children)
-          | (Some child, otherNodes) ->
-              (* Pass the rest of the string to the child, building a new trie with
-                 it and the node's other children *)
-              Trie (currValue, (ch, insert child rest value) :: otherNodes)
-      )
- );;
+let rec insert (Trie (currValue, children)) s value = match s with
+  | [] -> Trie (Some value, children)   (* assign our value to the node *)
+  | ch :: rest -> (
+      match assoc children ch with
+        | (None, _) ->
+            (* Prepend a new trie from our string to the children *)
+            Trie (currValue, (ch, trie_from_char_list rest value) :: children)
+        | (Some child, otherNodes) ->
+            (* Pass the rest of the string to the child, building a new trie with
+                it and the node's other children *)
+            Trie (currValue, (ch, insert child rest value) :: otherNodes)
+      );;
 
 assert (trie_from_char_list ['a'] 15 = insert root ['a'] 15);;
 
@@ -49,15 +47,12 @@ assert (insert (insert root ['a'] 10) ['a'; 't'] 20 =
 assert (insert (insert root ['a'] 15) ['a'] 77 =
           Trie (None, [('a', Trie (Some 77, []))]));;
 
-let rec find trie s = match trie with Trie (currValue, children) -> (
-  match s with
-    | [] -> currValue
-    | ch :: rest -> (
-        match assoc children ch with
-          | (None, _) -> None
-          | (Some child, _) -> find child rest
-    )
-)
+let rec find (Trie (currValue, children)) = function
+  | [] -> currValue
+  | ch :: rest -> (
+      match assoc children ch with
+        | (None, _) -> None
+        | (Some child, _) -> find child rest)
 
 (* http://caml.inria.fr/pub/old_caml_site/FAQ/FAQ_EXPERT-eng.html#strings *)
 let explode s =
