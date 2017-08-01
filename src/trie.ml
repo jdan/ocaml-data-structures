@@ -47,12 +47,17 @@ assert (insert (insert root ['a'] 10) ['a'; 't'] 20 =
 assert (insert (insert root ['a'] 15) ['a'] 77 =
           Trie (None, [('a', Trie (Some 77, []))]));;
 
-let rec find (Trie (currValue, children)) = function
-  | [] -> currValue
+let rec traverse (Trie (currValue, children) as trie) = function
+  | [] -> Some trie
   | ch :: rest -> (
-      match assoc children ch with
-        | (None, _) -> None
-        | (Some child, _) -> find child rest)
+    match assoc children ch with
+      | (None, _) -> None
+      | (Some child, _) -> traverse child rest
+  )
+
+let rec lookup trie s = match traverse trie s with
+  | None -> None
+  | Some (Trie (value, _)) -> value
 
 (* http://caml.inria.fr/pub/old_caml_site/FAQ/FAQ_EXPERT-eng.html#strings *)
 let explode s =
@@ -60,8 +65,22 @@ let explode s =
     if i < 0 then l else exp (i - 1) (s.[i] :: l) in
   exp (String.length s - 1) [];;
 
-assert (find root ['Q'] = None);;
-assert (find (insert root ['a'] 10) ['a'] = Some 10);;
+assert (lookup root ['Q'] = None);;
+assert (lookup (insert root ['a'] 10) ['a'] = Some 10);;
+
+(* walk a trie and return values *)
+let walk trie =
+  let rec inner (Trie (currentValue, children)) str_so_far =
+    let child_values = List.flatten (
+      List.map
+        (fun (ch, child) -> inner child (str_so_far ^ Char.escaped ch))
+        children)
+
+    in match currentValue with
+      | None -> child_values
+      | Some value -> str_so_far :: child_values
+
+  in inner trie ""
 
 let trie_from_string_list strs =
   let rec inner trie = function
@@ -71,6 +90,24 @@ let trie_from_string_list strs =
   inner root strs;;
 
 let age_db = trie_from_string_list [("jordan", 25); ("joe", 13); ("jane", 20)];;
-assert (find age_db (explode "jordan") = Some 25);;
-assert (find age_db (explode "jane") = Some 20);;
-assert (find age_db (explode "jackson") = None);;
+(* lookup tests *)
+assert (lookup age_db (explode "jordan") = Some 25);;
+assert (lookup age_db (explode "jane") = Some 20);;
+assert (lookup age_db (explode "jackson") = None);;
+
+(* walk tests *)
+assert (List.length (walk age_db) = 3);;
+assert (List.mem "jordan" (walk age_db));;
+assert (List.mem "jane" (walk age_db));;
+assert (List.mem "joe" (walk age_db));;
+
+let match_prefix trie str = match (traverse trie (explode str)) with
+  | None -> []
+  | Some subtrie -> List.map (fun (item) -> str ^ item) (walk subtrie);;
+
+assert (match_prefix age_db "ja" = ["jane"]);;
+
+let jo_matches = match_prefix age_db "jo";;
+assert (List.length jo_matches = 2);;
+assert (List.mem "joe" jo_matches);;
+assert (List.mem "jordan" jo_matches);;
