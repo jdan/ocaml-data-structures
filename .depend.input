@@ -1,5 +1,6 @@
 src/setoid.ml
 src/stack.ml
 src/trie.ml
+test/setoid_test.ml
 test/stack_test.ml
 test/trie_test.ml

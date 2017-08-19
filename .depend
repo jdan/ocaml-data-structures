@@ -8,3 +8,5 @@ test/trie_test.cmo : src/trie.cmo
 test/trie_test.cmx : src/trie.cmx
 test/stack_test.cmo : src/stack.cmo
 test/stack_test.cmx : src/stack.cmx
+test/setoid_test.cmo : src/setoid.cmo
+test/setoid_test.cmx : src/setoid.cmx

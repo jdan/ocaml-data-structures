@@ -74,7 +74,8 @@ SOURCES = \
 	src/setoid.ml \
 	src/trie.ml \
 	test/trie_test.ml \
-	test/stack_test.ml
+	test/stack_test.ml \
+	test/setoid_test.ml
 
 # The executable file to generate
 
