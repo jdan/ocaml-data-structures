@@ -71,11 +71,11 @@
 
 SOURCES = \
 	src/stack.ml \
-	src/setoid.ml \
+	src/stack_test.ml \
 	src/trie.ml \
-	test/trie_test.ml \
-	test/stack_test.ml \
-	test/setoid_test.ml
+	src/trie_test.ml \
+	src/setoid.ml \
+	src/setoid_test.ml
 
 # The executable file to generate
 
@@ -88,7 +88,7 @@ EXEC = run_tests
 # You may fix here the path to access the Caml compiler on your machine
 # You may also have to add various -I options.
 
-INCLUDES = -I src -I test
+INCLUDES = -I src
 
 CAMLC = ocamlc $(INCLUDES)
 CAMLOPT = ocamlopt $(INCLUDES)

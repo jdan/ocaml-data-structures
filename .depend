@@ -1,12 +1,12 @@
 src/stack.cmo :
 src/stack.cmx :
-src/setoid.cmo :
-src/setoid.cmx :
+src/stack_test.cmo : src/stack.cmo
+src/stack_test.cmx : src/stack.cmx
 src/trie.cmo :
 src/trie.cmx :
-test/trie_test.cmo : src/trie.cmo
-test/trie_test.cmx : src/trie.cmx
-test/stack_test.cmo : src/stack.cmo
-test/stack_test.cmx : src/stack.cmx
-test/setoid_test.cmo : src/setoid.cmo
-test/setoid_test.cmx : src/setoid.cmx
+src/trie_test.cmo : src/trie.cmo
+src/trie_test.cmx : src/trie.cmx
+src/setoid.cmo :
+src/setoid.cmx :
+src/setoid_test.cmo : src/setoid.cmo
+src/setoid_test.cmx : src/setoid.cmx
