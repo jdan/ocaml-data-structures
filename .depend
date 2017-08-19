@@ -1,0 +1,8 @@
+src/stack.cmo :
+src/stack.cmx :
+src/setoid.cmo :
+src/setoid.cmx :
+src/trie.cmo :
+src/trie.cmx :
+test/trie_test.cmo : src/trie.cmo
+test/trie_test.cmx : src/trie.cmx
