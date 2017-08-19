@@ -6,3 +6,5 @@ src/trie.cmo :
 src/trie.cmx :
 test/trie_test.cmo : src/trie.cmo
 test/trie_test.cmx : src/trie.cmx
+test/stack_test.cmo : src/stack.cmo
+test/stack_test.cmx : src/stack.cmx
