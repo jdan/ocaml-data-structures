@@ -79,7 +79,7 @@ SOURCES = \
 
 # The executable file to generate
 
-EXEC = main
+EXEC = run_tests
 
 
 ########################## Advanced user's variables #####################
@@ -135,7 +135,8 @@ all:: .depend.input .depend $(EXEC)
 
 opt : $(EXEC).opt
 
-run: $(EXEC)
+.PHONY: test
+test: $(EXEC)
 	@./$(EXEC) && echo "All tests pass"
 
 #ocamlc -custom other options graphics.cma other files -cclib -lgraphics -cclib -lX11
