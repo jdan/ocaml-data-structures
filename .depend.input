@@ -1,3 +1,5 @@
+src/functor.ml
+src/functor_test.ml
 src/setoid.ml
 src/setoid_test.ml
 src/stack.ml

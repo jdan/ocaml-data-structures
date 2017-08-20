@@ -23,3 +23,7 @@ let rec stack_of_list = function
 let rec list_of_stack = function
   | Empty -> []
   | Item (head, rest) -> head :: list_of_stack rest
+
+let rec fmap f = function
+  | Empty -> Empty
+  | Item (head, tail) -> Item (f head, fmap f tail)

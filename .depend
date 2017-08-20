@@ -10,3 +10,7 @@ src/setoid.cmo :
 src/setoid.cmx :
 src/setoid_test.cmo : src/setoid.cmo
 src/setoid_test.cmx : src/setoid.cmx
+src/functor.cmo :
+src/functor.cmx :
+src/functor_test.cmo : src/stack.cmo src/functor.cmo
+src/functor_test.cmx : src/stack.cmx src/functor.cmx
