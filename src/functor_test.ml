@@ -1,9 +1,8 @@
 open Functor;;
 
 (* Let's define an OCaml functor that `fmap`s n -> n + 1 *)
-(* Functor functor functor functor *)
-module Increment = functor(Functor : Functor) -> struct
-  let go = Functor.fmap (fun n -> n + 1)
+module Increment(F : Functor) = struct
+  let go = F.fmap (fun n -> n + 1)
 end
 
 (* Define a Maybe functor *)
