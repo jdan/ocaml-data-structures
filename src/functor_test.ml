@@ -34,6 +34,6 @@ assert(get_age "Jake" |> age_next_year |> string_of_age = "2");;
 assert(get_age "Melissa" |> age_next_year |> string_of_age = "User not found");;
 
 (* Let's increment some Stacks! Which are also Functors *)
-module IncrementStack = Increment(Stack)
-let stack = Stack.stack_of_list [3 ; 5 ; 1 ; 2];;
-assert (IncrementStack.go stack |> Stack.list_of_stack = [4 ; 6 ; 2; 3]);;
+module IncrementStack = Increment(Mystack)
+let stack = Mystack.stack_of_list [3 ; 5 ; 1 ; 2];;
+assert (IncrementStack.go stack |> Mystack.list_of_stack = [4 ; 6 ; 2; 3]);;

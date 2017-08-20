@@ -70,8 +70,8 @@
 # The Caml sources (including camlyacc and camllex source files)
 
 SOURCES = \
-	src/stack.ml \
-	src/stack_test.ml \
+	src/mystack.ml \
+	src/mystack_test.ml \
 	src/trie.ml \
 	src/trie_test.ml \
 	src/setoid.ml \

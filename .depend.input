@@ -1,8 +1,8 @@
 src/functor.ml
 src/functor_test.ml
+src/mystack.ml
+src/mystack_test.ml
 src/setoid.ml
 src/setoid_test.ml
-src/stack.ml
-src/stack_test.ml
 src/trie.ml
 src/trie_test.ml

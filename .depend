@@ -1,7 +1,7 @@
-src/stack.cmo :
-src/stack.cmx :
-src/stack_test.cmo : src/stack.cmo
-src/stack_test.cmx : src/stack.cmx
+src/mystack.cmo :
+src/mystack.cmx :
+src/mystack_test.cmo : src/mystack.cmo
+src/mystack_test.cmx : src/mystack.cmx
 src/trie.cmo :
 src/trie.cmx :
 src/trie_test.cmo : src/trie.cmo
@@ -12,5 +12,5 @@ src/setoid_test.cmo : src/setoid.cmo
 src/setoid_test.cmx : src/setoid.cmx
 src/functor.cmo :
 src/functor.cmx :
-src/functor_test.cmo : src/stack.cmo src/functor.cmo
-src/functor_test.cmx : src/stack.cmx src/functor.cmx
+src/functor_test.cmo : src/mystack.cmo src/functor.cmo
+src/functor_test.cmx : src/mystack.cmx src/functor.cmx
