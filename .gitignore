@@ -1,3 +1,5 @@
 *.cmi
 *.cmo
 run_tests
+.depend
+.depend.input

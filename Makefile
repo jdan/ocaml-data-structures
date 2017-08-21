@@ -218,4 +218,4 @@ depend: .depend
 	@echo '--Re-building dependencies'
 	$(CAMLDEP) $(SMLIY) $(SMLIY:.ml=.mli) > .depend
 
-include .depend
+-include .depend
