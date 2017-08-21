@@ -3,7 +3,7 @@
 (* We'll build our queue out of two Mystacks *)
 type 'a queue = 'a Mystack.t * 'a Mystack.t
 
-let empty = (Mystack.Empty, Mystack.Empty)
+let empty: 'a queue = (Mystack.Empty, Mystack.Empty)
 
 (* Queueing is easy: we just push an item to the front stack *)
 let enqueue item ((front, back) :'a queue) : 'a queue =
@@ -12,7 +12,7 @@ let enqueue item ((front, back) :'a queue) : 'a queue =
 (* Dequeueing is where our "back" stack somes in hand. We can pop
    from the "back" to get our items in reverse, but if "back" is
    empty then we need to "spill" the front stack into the back. *)
-let rec dequeue (front, back) =
+let rec dequeue ((front, back): 'a queue): ('a * 'a queue) option =
   (* Spill the front stack into the back - it'll be reversed *)
   let rec spillover (front, back) = match Mystack.pop front with
     | None -> (front, back)
