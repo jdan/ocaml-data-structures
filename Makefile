@@ -79,7 +79,9 @@ SOURCES = \
 	src/functor.ml \
 	src/functor_test.ml \
 	src/algebra.ml \
-	src/algebra_test.ml
+	src/algebra_test.ml \
+	src/myqueue.ml \
+	src/myqueue_test.ml
 
 # The executable file to generate
 
