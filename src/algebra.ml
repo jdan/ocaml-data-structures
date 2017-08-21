@@ -23,14 +23,14 @@ let rec string_of_expression = function
 let rec simplify ex =
   let rec simplify_once = function
     | Addition (Value a, Value b) -> Value (a + b)
-    | Addition (Value 0, ex) -> simplify_once ex
+    | Addition (Value 0, ex)
     | Addition (ex, Value(0)) -> simplify_once ex
     | Addition (a, b) -> Addition (simplify_once a, simplify_once b)
 
     | Multiplication (Value a, Value b) -> Value (a * b)
-    | Multiplication (Value 0, _) -> Value 0
+    | Multiplication (Value 0, _)
     | Multiplication (_, Value 0) -> Value 0
-    | Multiplication (Value 1, ex) -> simplify_once ex
+    | Multiplication (Value 1, ex)
     | Multiplication (ex, Value 1) -> simplify_once ex
     | Multiplication (Variable a, Variable b) when a = b -> Exponentiation (Variable a, 2)
     | Multiplication (a, b) -> Multiplication (simplify_once a, simplify_once b)
