@@ -1,7 +1,7 @@
 open Functor;;
 
 (* Let's define an OCaml functor that `fmap`s n -> n + 1 *)
-module Increment(F : Functor) = struct
+module Increment (F : Functor) = struct
   let go = F.fmap ((+) 1)
 end
 
@@ -14,7 +14,7 @@ module Maybe = struct
 end
 
 (* Let's increment some Maybes *)
-module IncrementMaybe = Increment(Maybe)
+module IncrementMaybe = Increment (Maybe)
 
 let get_age = function
   | "Jordan" -> Some 25
@@ -33,12 +33,12 @@ assert(get_age "Jake" |> age_next_year |> string_of_age = "2");;
 assert(get_age "Melissa" |> age_next_year |> string_of_age = "User not found");;
 
 (* Let's increment some Stacks! Which are also Functors *)
-module IncrementStack = Increment(Mystack)
+module IncrementStack = Increment (Mystack)
 let stack = Mystack.stack_of_list [3 ; 5 ; 1 ; 2];;
 assert (IncrementStack.go stack |> Mystack.list_of_stack = [4 ; 6 ; 2; 3]);;
 
 (* An either module *)
-module Either(Config: sig type t end) = struct
+module Either (Config: sig type t end) = struct
   type 'a t = Left of Config.t | Right of 'a
   let fmap f = function
     | Left l -> Left l
@@ -46,8 +46,8 @@ module Either(Config: sig type t end) = struct
 end
 
 (* Why can't I combine these two lines? *)
-module EitherString = Either(struct type t = string end)
-module IncrementEither = Increment(EitherString)
+module EitherString = Either (struct type t = string end)
+module IncrementEither = Increment (EitherString)
 
 let get_age_either = function
   | "Jordan" -> EitherString.Right 25
