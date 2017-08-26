@@ -81,7 +81,9 @@ SOURCES = \
 	src/algebra.ml \
 	src/algebra_test.ml \
 	src/myqueue.ml \
-	src/myqueue_test.ml
+	src/myqueue_test.ml \
+	src/finite_state_machine.ml \
+	src/finite_state_machine_test.ml
 
 # The executable file to generate
 
