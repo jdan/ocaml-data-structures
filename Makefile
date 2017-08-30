@@ -83,7 +83,9 @@ SOURCES = \
 	src/myqueue.ml \
 	src/myqueue_test.ml \
 	src/finite_state_machine.ml \
-	src/finite_state_machine_test.ml
+	src/finite_state_machine_test.ml \
+	src/wire.ml \
+	src/wire_test.ml
 
 # The executable file to generate
 
@@ -98,7 +100,7 @@ EXEC = run_tests
 
 INCLUDES = -I src
 
-CAMLC = ocamlc $(INCLUDES)
+CAMLC = ocamlc -rectypes $(INCLUDES)
 CAMLOPT = ocamlopt $(INCLUDES)
 CAMLDEP = ocamldep $(INCLUDES)
 CAMLLEX = ocamllex $(INCLUDES)
