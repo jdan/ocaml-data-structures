@@ -3,7 +3,18 @@ module type Ord = sig
   val compare : t -> t -> int
 end
 
-module BinarySearchTree(Ord : Ord) = struct
+module type BST = sig
+  type t
+  type comparable
+  val emptyTree : t
+  val insert : t -> comparable -> t
+  val find : t -> comparable -> bool
+end
+
+module BinarySearchTree(Ord : Ord)
+  (* https://realworldocaml.org/v1/en/html/functors.html#destructive-substitution *)
+  : (BST with type comparable := Ord.t) =
+struct
   type 'a node =
     { value: Ord.t;
       left: 'a;
