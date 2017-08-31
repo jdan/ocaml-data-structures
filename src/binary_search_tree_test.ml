@@ -3,6 +3,9 @@ open Binary_search_tree;;
 module IntBST = BinarySearchTree(
   struct
     type t = int
+
+    (* OCaml provides a top-level `compare` method which
+       works on a few types (int included) *)
     let compare = compare
   end)
 
