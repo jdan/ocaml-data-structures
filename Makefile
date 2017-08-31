@@ -85,7 +85,9 @@ SOURCES = \
 	src/finite_state_machine.ml \
 	src/finite_state_machine_test.ml \
 	src/wire.ml \
-	src/wire_test.ml
+	src/wire_test.ml \
+	src/binary_search_tree.ml \
+	src/binary_search_tree_test.ml
 
 # The executable file to generate
 
