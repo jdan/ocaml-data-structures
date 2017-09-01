@@ -15,15 +15,12 @@ module BinarySearchTree(Ord : Ord)
   (* https://realworldocaml.org/v1/en/html/functors.html#destructive-substitution *)
   : (BST with type comparable := Ord.t) =
 struct
-  type 'a node =
-    { value: Ord.t;
-      left: 'a;
-      right: 'a;
-    }
-
   type t =
     | Empty
-    | Node of t node
+    | Node of { value: Ord.t;
+                left: t;
+                right: t;
+              }
 
   let emptyTree = Empty
 
