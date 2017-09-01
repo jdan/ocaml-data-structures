@@ -17,24 +17,32 @@ module PersonRBT = RedBlackTree(Person)
 module IntRBT = RedBlackTree(Int)
 
 let () =
+  let int_rb_tree = List.fold_left IntRBT.insert IntRBT.emptyTree [
+      1; 2; 3; 4; 5; 6;
+    ] in
+
+  assert(IntRBT.find int_rb_tree 3);
+  assert(IntRBT.find int_rb_tree 6);
+  assert(not (IntRBT.find int_rb_tree 7));
+
   assert(
     "(2, (1, _, _), (4, (3, _, _), (5, _, (6, _, _))))" =
-    begin
-      List.fold_left IntRBT.insert IntRBT.emptyTree [
-        1; 2; 3; 4; 5; 6;
-      ] |> IntRBT.string_of_tree
-    end);
+    IntRBT.string_of_tree int_rb_tree
+  );
 
+  let person_rb_tree = List.fold_left PersonRBT.insert PersonRBT.emptyTree [
+      ("Jake", 1) ;
+      ("Victoria", 4) ;
+      ("Jordan", 25) ;
+      ("Steve", 29) ;
+      ("Rob", 33) ;
+    ] in
+
+  assert(PersonRBT.find person_rb_tree ("Steve", 29));
+  assert(PersonRBT.find person_rb_tree ("Jordan", 25));
+  assert(not (PersonRBT.find person_rb_tree ("Jordan", 24)));
   assert(
     "((Victoria, 4), ((Jake, 1), _, _), ((Steve, 29), " ^
     "((Jordan, 25), _, _), ((Rob, 33), _, _)))" =
-    begin
-      List.fold_left PersonRBT.insert PersonRBT.emptyTree [
-        ("Jake", 1) ;
-        ("Victoria", 4) ;
-        ("Jordan", 25) ;
-        ("Steve", 29) ;
-        ("Rob", 33) ;
-      ] |> PersonRBT.string_of_tree
-    end
-  )
+    PersonRBT.string_of_tree person_rb_tree
+  );

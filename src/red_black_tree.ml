@@ -176,5 +176,13 @@ struct
     |> rebalance
     |> root_of_node
 
-  let rec find tree value = true
+  let rec find node value = match node with
+    | Empty -> false
+    | Node n ->
+      if Ord.compare value n.value = 0 then
+        true
+      else if Ord.compare value n.value < 0 then
+        find n.left value
+      else
+        find n.right value
 end
