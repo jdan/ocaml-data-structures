@@ -87,7 +87,9 @@ SOURCES = \
 	src/wire.ml \
 	src/wire_test.ml \
 	src/binary_search_tree.ml \
-	src/binary_search_tree_test.ml
+	src/binary_search_tree_test.ml \
+	src/red_black_tree.ml \
+	src/red_black_tree_test.ml
 
 # The executable file to generate
 

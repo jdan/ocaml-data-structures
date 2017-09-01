@@ -1,6 +1,7 @@
 module type Ord = sig
   type t
   val compare : t -> t -> int
+  val show : t -> string
 end
 
 module type BST = sig
@@ -9,6 +10,7 @@ module type BST = sig
   val emptyTree : t
   val insert : t -> comparable -> t
   val find : t -> comparable -> bool
+  val string_of_tree : t -> string
 end
 
 module BinarySearchTree(Ord : Ord)
@@ -23,6 +25,17 @@ struct
               }
 
   let emptyTree = Empty
+
+  let rec string_of_tree = function
+    | Empty -> "_"
+    | Node n ->
+      "("
+      ^ (Ord.show n.value)
+      ^ ", "
+      ^ (string_of_tree n.left)
+      ^ ", "
+      ^ (string_of_tree n.right)
+      ^ ")"
 
   let rec insert node value = match node with
     | Empty -> Node { value = value;
