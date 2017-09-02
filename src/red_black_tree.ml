@@ -185,4 +185,12 @@ struct
         find n.left value
       else
         find n.right value
+
+  let rec height = function
+    | Empty -> 0
+    | Node n ->
+      let left = height n.left in
+      let right = height n.right in
+      if left > right then 1 + left
+      else 1 + right
 end

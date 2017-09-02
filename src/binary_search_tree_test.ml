@@ -14,3 +14,4 @@ assert (IntBST.find tree 5);;
 assert (IntBST.find tree 6);;
 assert (IntBST.find tree 3);;
 assert (not @@ IntBST.find tree 2);;
+assert (4 = IntBST.height tree)

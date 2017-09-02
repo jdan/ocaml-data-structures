@@ -10,6 +10,7 @@ module type BST = sig
   val emptyTree : t
   val insert : t -> comparable -> t
   val find : t -> comparable -> bool
+  val height : t -> int
   val string_of_tree : t -> string
 end
 
@@ -60,4 +61,12 @@ struct
         find n.left value
       else
         find n.right value
+
+  let rec height = function
+    | Empty -> 0
+    | Node n ->
+      let left = height n.left in
+      let right = height n.right in
+      if left > right then 1 + left
+      else 1 + right
 end
