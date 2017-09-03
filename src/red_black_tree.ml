@@ -176,21 +176,13 @@ struct
     |> rebalance
     |> root_of_node
 
-  let rec find node value = match node with
-    | Empty -> false
-    | Node n ->
-      if Ord.compare value n.value = 0 then
-        true
-      else if Ord.compare value n.value < 0 then
-        find n.left value
-      else
-        find n.right value
-
-  let rec height = function
-    | Empty -> 0
-    | Node n ->
-      let left = height n.left in
-      let right = height n.right in
-      if left > right then 1 + left
-      else 1 + right
+  include BinarySearchTreeUtils(struct
+      type t_ = t   (* ... How do I avoid this? *)
+      type v = Ord.t
+      let is_empty = (=) Empty
+      let left (Node n) = n.left
+      let right (Node n) = n.right
+      let value (Node n) = n.value
+      let compare = Ord.compare
+    end)
 end
