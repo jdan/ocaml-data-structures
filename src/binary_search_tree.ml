@@ -27,7 +27,7 @@ end
 module BinarySearchTreeUtils(BST : UtilsSig) = struct
   let rec find node v =
     if BST.is_empty node then false
-    else if BST.value node = v then true
+    else if BST.compare v (BST.value node) = 0 then true
     else if BST.compare v (BST.value node) < 0 then
       find (BST.left node) v
     else
