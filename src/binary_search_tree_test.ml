@@ -9,7 +9,7 @@ module IntBST = BinarySearchTree(struct
     let show = string_of_int
   end)
 
-let tree = List.fold_left IntBST.insert IntBST.emptyTree [5; 6; 7; 1; 10; 3];;
+let tree = List.fold_left IntBST.insert IntBST.empty_tree [5; 6; 7; 1; 10; 3];;
 assert (IntBST.find tree 5);;
 assert (IntBST.find tree 6);;
 assert (IntBST.find tree 3);;

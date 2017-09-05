@@ -21,7 +21,7 @@ let rec range a b =
   else a :: range (a + 1) b
 
 let () =
-  let int_rb_tree = List.fold_left IntRBT.insert IntRBT.emptyTree [
+  let int_rb_tree = List.fold_left IntRBT.insert IntRBT.empty_tree [
       1; 2; 3; 4; 5; 6;
     ] in
 
@@ -34,7 +34,7 @@ let () =
     IntRBT.string_of_tree int_rb_tree
   );
 
-  let person_rb_tree = List.fold_left PersonRBT.insert PersonRBT.emptyTree [
+  let person_rb_tree = List.fold_left PersonRBT.insert PersonRBT.empty_tree [
       ("Jake", 1) ;
       ("Victoria", 4) ;
       ("Jordan", 25) ;
@@ -54,8 +54,8 @@ let () =
   (* Assert that balancing works for left-heavy and right-heavy trees *)
   assert (
     (=)
-      (List.fold_left IntRBT.insert IntRBT.emptyTree (range 1 10000)
+      (List.fold_left IntRBT.insert IntRBT.empty_tree (range 1 10000)
        |> IntRBT.height)
-      (List.fold_left IntRBT.insert IntRBT.emptyTree (range 1 10000 |> List.rev)
+      (List.fold_left IntRBT.insert IntRBT.empty_tree (range 1 10000 |> List.rev)
        |> IntRBT.height)
   )
