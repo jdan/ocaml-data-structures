@@ -15,17 +15,6 @@ module RedBlackTree(Ord : Ord)
 
     let empty_tree = Empty
 
-    let rec string_of_tree = function
-      | Empty -> "_"
-      | Node n ->
-        "("
-        ^ (Ord.show n.value)
-        ^ ", "
-        ^ (string_of_tree n.left)
-        ^ ", "
-        ^ (string_of_tree n.right)
-        ^ ")"
-
     let get_parent = function
       (* The parent of an empty node is...empty? Could be None *)
       | Empty -> Empty
@@ -176,9 +165,9 @@ module RedBlackTree(Ord : Ord)
       |> rebalance
       |> root_of_node
 
-    let is_empty = (=) Empty
     let left (Node n) = n.left
     let right (Node n) = n.right
     let value (Node n) = n.value
     let compare = Ord.compare
+    let show_value = Ord.show
   end)
