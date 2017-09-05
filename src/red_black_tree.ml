@@ -1,9 +1,8 @@
-open Binary_search_tree;;
-
 module RedBlackTree
-    (Ord : Ord)
-  : (BST with type comparable := Ord.t) =
-  Make (Ord) (struct
+    (Ord : Binary_search_tree.Ord)
+  : (Binary_search_tree.BST with type comparable := Ord.t) =
+
+  Binary_search_tree.Make (Ord) (struct
     type color = Red | Black
     type t =
       | Empty
