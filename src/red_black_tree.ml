@@ -11,9 +11,16 @@ module RedBlackTree(Ord : Ord)
                   mutable left : t;
                   mutable right : t;
                 }
-    type comparable = Ord.t
 
     let empty_tree = Empty
+    let left (Node n) = n.left
+    let right (Node n) = n.right
+    let value (Node n) = n.value
+
+    (* Can we include these? *)
+    type comparable = Ord.t
+    let compare = Ord.compare
+    let show = Ord.show
 
     let get_parent = function
       (* The parent of an empty node is...empty? Could be None *)
@@ -164,10 +171,4 @@ module RedBlackTree(Ord : Ord)
       |> (fun (node, _) -> node)
       |> rebalance
       |> root_of_node
-
-    let left (Node n) = n.left
-    let right (Node n) = n.right
-    let value (Node n) = n.value
-    let compare = Ord.compare
-    let show_value = Ord.show
   end)

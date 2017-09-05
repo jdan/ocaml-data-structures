@@ -4,34 +4,31 @@ module type Ord = sig
   val show : t -> string
 end
 
-module type BST = sig
+module type BSTPassThruFields = sig
   type t
   type comparable
   val empty_tree : t
   val insert : t -> comparable -> t
+end
 
-  (* Generated *)
+module type InputBST = sig
+  include BSTPassThruFields
+  include Ord with type t := comparable
+
+  val left: t -> t
+  val right: t -> t
+  val value: t -> comparable
+end
+
+module type BST = sig
+  include BSTPassThruFields
+
   val find : t -> comparable -> bool
   val height : t -> int
   val string_of_tree : t -> string
 end
 
-module type S = sig
-  (* Pass-thru *)
-  type t
-  type comparable
-  val empty_tree : t
-  val insert : t -> comparable -> t
-
-  val left: t -> t
-  val right: t -> t
-  val value: t -> comparable
-  (* Can I include this from the Ord sig? *)
-  val show_value: comparable -> string
-  val compare: comparable -> comparable -> int
-end
-
-module Make(Base: S) : (BST with type comparable := Base.comparable) = struct
+module Make(Base: InputBST) : (BST with type comparable := Base.comparable) = struct
   include Base
 
   let rec find node v =
@@ -54,7 +51,7 @@ module Make(Base: S) : (BST with type comparable := Base.comparable) = struct
     if node = Base.empty_tree then "_"
     else
       "("
-      ^ (Base.show_value @@ value node)
+      ^ (Base.show @@ value node)
       ^ ", "
       ^ (string_of_tree @@ left node)
       ^ ", "
@@ -71,10 +68,15 @@ module BinarySearchTree(Ord : Ord) : (BST with type comparable := Ord.t) =
                   right: t;
                 }
 
-    type comparable = Ord.t
-    let show_value = Ord.show
-
     let empty_tree = Empty
+    let left (Node n) = n.left
+    let right (Node n) = n.right
+    let value (Node n) = n.value
+
+    (* Can we include these? *)
+    type comparable = Ord.t
+    let compare = Ord.compare
+    let show = Ord.show
 
     let rec insert node value = match node with
       | Empty -> Node { value = value;
@@ -89,9 +91,4 @@ module BinarySearchTree(Ord : Ord) : (BST with type comparable := Ord.t) =
         else
           Node { n with
                  right = insert n.right value }
-
-    let left (Node n) = n.left
-    let right (Node n) = n.right
-    let value (Node n) = n.value
-    let compare = Ord.compare
   end)
