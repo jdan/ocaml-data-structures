@@ -1,7 +1,9 @@
 open Binary_search_tree;;
 
-module RedBlackTree(Ord : Ord)
-  : (BST with type comparable := Ord.t) = Make(struct
+module RedBlackTree
+    (Ord : Ord)
+  : (BST with type comparable := Ord.t) =
+  Make (Ord) (struct
     type color = Red | Black
     type t =
       | Empty
@@ -16,11 +18,6 @@ module RedBlackTree(Ord : Ord)
     let left (Node n) = n.left
     let right (Node n) = n.right
     let value (Node n) = n.value
-
-    (* Can we include these? *)
-    type comparable = Ord.t
-    let compare = Ord.compare
-    let show = Ord.show
 
     let get_parent = function
       (* The parent of an empty node is...empty? Could be None *)

@@ -13,7 +13,6 @@ end
 
 module type InputBST = sig
   include BSTPassThruFields
-  include Ord with type t := comparable
 
   val left: t -> t
   val right: t -> t
@@ -28,13 +27,17 @@ module type BST = sig
   val string_of_tree : t -> string
 end
 
-module Make(Base: InputBST) : (BST with type comparable := Base.comparable) = struct
+module Make
+    (Ord: Ord)
+    (Base: InputBST with type comparable := Ord.t)
+  : (BST with type comparable := Ord.t) =
+struct
   include Base
 
   let rec find node v =
     if node = Base.empty_tree then false
-    else if Base.compare v (Base.value node) = 0 then true
-    else if Base.compare v (Base.value node) < 0 then
+    else if Ord.compare v (Base.value node) = 0 then true
+    else if Ord.compare v (Base.value node) < 0 then
       find (Base.left node) v
     else
       find (Base.right node) v
@@ -51,7 +54,7 @@ module Make(Base: InputBST) : (BST with type comparable := Base.comparable) = st
     if node = Base.empty_tree then "_"
     else
       "("
-      ^ (Base.show @@ value node)
+      ^ (Ord.show @@ value node)
       ^ ", "
       ^ (string_of_tree @@ left node)
       ^ ", "
@@ -59,8 +62,10 @@ module Make(Base: InputBST) : (BST with type comparable := Base.comparable) = st
       ^ ")"
 end
 
-module BinarySearchTree(Ord : Ord) : (BST with type comparable := Ord.t) =
-  Make(struct
+module BinarySearchTree
+    (Ord : Ord)
+  : (BST with type comparable := Ord.t) =
+  Make (Ord) (struct
     type t =
       | Empty
       | Node of { value: Ord.t;
@@ -72,11 +77,6 @@ module BinarySearchTree(Ord : Ord) : (BST with type comparable := Ord.t) =
     let left (Node n) = n.left
     let right (Node n) = n.right
     let value (Node n) = n.value
-
-    (* Can we include these? *)
-    type comparable = Ord.t
-    let compare = Ord.compare
-    let show = Ord.show
 
     let rec insert node value = match node with
       | Empty -> Node { value = value;
