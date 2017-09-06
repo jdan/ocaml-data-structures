@@ -89,7 +89,9 @@ SOURCES = \
 	src/binary_search_tree.ml \
 	src/binary_search_tree_test.ml \
 	src/red_black_tree.ml \
-	src/red_black_tree_test.ml
+	src/red_black_tree_test.ml \
+	src/levenshtein.ml \
+	src/levenshtein_test.ml
 
 # The executable file to generate
 
