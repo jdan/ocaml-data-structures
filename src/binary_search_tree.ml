@@ -1,9 +1,3 @@
-module type Ord = sig
-  type t
-  val compare : t -> t -> int
-  val show : t -> string
-end
-
 module type BSTPassThruFields = sig
   type t
   type comparable
@@ -28,7 +22,7 @@ module type BST = sig
 end
 
 module Make
-    (Ord: Ord)
+    (Ord: Ord.S)
     (Base: InputBST with type comparable := Ord.t)
   : (BST with type comparable := Ord.t) =
 struct
@@ -63,7 +57,7 @@ struct
 end
 
 module BinarySearchTree
-    (Ord : Ord)
+    (Ord : Ord.S)
   : (BST with type comparable := Ord.t) =
   Make (Ord) (struct
     type t =

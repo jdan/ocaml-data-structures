@@ -1,5 +1,5 @@
 module RedBlackTree
-    (Ord : Binary_search_tree.Ord)
+    (Ord : Ord.S)
   : (Binary_search_tree.BST with type comparable := Ord.t) =
 
   Binary_search_tree.Make (Ord) (struct

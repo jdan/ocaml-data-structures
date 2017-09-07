@@ -91,7 +91,8 @@ SOURCES = \
 	src/red_black_tree.ml \
 	src/red_black_tree_test.ml \
 	src/levenshtein.ml \
-	src/levenshtein_test.ml
+	src/levenshtein_test.ml \
+	src/ord.ml
 
 # The executable file to generate
 
