@@ -24,7 +24,8 @@ end
 module Make
     (Ord: Ord.S)
     (Base: InputBST with type comparable := Ord.t)
-  : (BST with type comparable := Ord.t) =
+  : (BST with type t = Base.t
+          and type comparable := Ord.t) =
 struct
   include Base
 

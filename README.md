@@ -15,6 +15,7 @@ I'm learning OCaml and re-learning some data structures.
 * **[Binary Search Tree](https://github.com/jdan/ocaml-data-structures/blob/master/src/binary_search_tree.ml)** ([tests](https://github.com/jdan/ocaml-data-structures/blob/master/src/binary_search_tree_test.ml)) - A [binary search tree](https://en.wikipedia.org/wiki/Binary_search_tree) parameterized over a general `Ord` type (any struct with a `compare: t -> t -> int` operation).
 * **[Red-Black Tree](https://github.com/jdan/ocaml-data-structures/blob/master/src/red_black_tree.ml)** ([tests](https://github.com/jdan/ocaml-data-structures/blob/master/src/red_black_tree_test.ml)) - A [Red-black tree](https://en.wikipedia.org/wiki/Red%E2%80%93black_tree) implementation, which is a more specific type of binary search tree that self-balances on insert.
 * **[Levenshtein Distance](https://github.com/jdan/ocaml-data-structures/blob/master/src/levenshtein.ml)** ([tests](https://github.com/jdan/ocaml-data-structures/blob/master/src/levenshtein_test.ml)) - A [Levenshtein distance](https://en.wikipedia.org/wiki/Levenshtein_distance) calculator, or the number of insertions, deletions, modification required to get from one sequence to another.
+* **[Binary Heap](https://github.com/jdan/ocaml-data-structures/blob/master/src/binary_heap.ml)** ([tests](https://github.com/jdan/ocaml-data-structures/blob/master/src/binary_heap_test.ml)) - A [binary heap](https://en.wikipedia.org/wiki/Binary_heap) data structure parameterized with a comparable type to define min- and max- heaps.
 
 ### Development
 
