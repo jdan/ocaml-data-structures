@@ -14,9 +14,15 @@ module RedBlackTree
                 }
 
     let empty_tree = Empty
-    let left (Node n) = n.left
-    let right (Node n) = n.right
-    let value (Node n) = n.value
+    let left = function
+      | Node n -> n.left
+      | _ -> raise (Invalid_argument "Tried to call left on an empty item")
+    let right = function
+      | Node n -> n.right
+      | _ -> raise (Invalid_argument "Tried to call right on an empty item")
+    let value = function
+      | Node n -> n.value
+      | _ -> raise (Invalid_argument "Tried to call value on an empty item")
 
     let get_parent = function
       (* The parent of an empty node is...empty? Could be None *)
