@@ -105,9 +105,16 @@ let encode str dictionary =
 
 let decode tree stream =
   let rec inner node stream = match (node, stream) with
+    (* Check this case first so we don't accidentally forget our
+       character when our stream is empty! *)
     | (Leaf { char = c; _ }, []) -> [c]
+
+    (* Now check base cases (empty stream, leaf) *)
     | (_, []) -> []
     | (Leaf { char = c; _ }, _) -> c :: inner tree stream
+
+    (* Recursive step, pop the stream and traverse our coding tree
+       accordingly *)
     | (Node { left = l; right = r; _ }, hd :: tail) ->
       if hd = 0 then inner l tail
       else if hd = 1 then inner r tail
