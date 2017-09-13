@@ -94,7 +94,9 @@ SOURCES = \
 	src/levenshtein_test.ml \
 	src/ord.ml \
 	src/binary_heap.ml \
-	src/binary_heap_test.ml
+	src/binary_heap_test.ml \
+	src/huffman_coding.ml \
+	src/huffman_coding_test.ml
 
 # The executable file to generate
 
