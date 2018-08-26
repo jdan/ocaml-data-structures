@@ -70,6 +70,7 @@
 # The Caml sources (including camlyacc and camllex source files)
 
 SOURCES = \
+	src/ord.ml \
 	src/mystack.ml \
 	src/mystack_test.ml \
 	src/trie.ml \
@@ -92,7 +93,6 @@ SOURCES = \
 	src/red_black_tree_test.ml \
 	src/levenshtein.ml \
 	src/levenshtein_test.ml \
-	src/ord.ml \
 	src/binary_heap.ml \
 	src/binary_heap_test.ml \
 	src/huffman_coding.ml \
