@@ -1,20 +1,12 @@
 open Functor;;
 
-(* Let's define an OCaml functor that `fmap`s n -> n + 1 *)
-module Increment (F : Functor) = struct
-  let go = F.fmap ((+) 1)
-end
-
 (* Define a Maybe functor *)
-module Maybe = struct
+module Maybe : (Functor with type 'a t = 'a option) = struct
   type 'a t = 'a option
   let fmap f x = match x with
     | Some v -> Some (f v)
     | None -> None
 end
-
-(* Let's increment some Maybes *)
-module IncrementMaybe = Increment (Maybe)
 
 let get_age = function
   | "Jordan" -> Some 25
@@ -22,7 +14,7 @@ let get_age = function
   | "Jake" -> Some 1
   | _ -> None
 
-let age_next_year = IncrementMaybe.go
+let age_next_year = Maybe.fmap ((+) 1)
 
 let string_of_age = function
   | None -> "User not found"
@@ -33,9 +25,8 @@ assert(get_age "Jake" |> age_next_year |> string_of_age = "2");;
 assert(get_age "Melissa" |> age_next_year |> string_of_age = "User not found");;
 
 (* Let's increment some Stacks! Which are also Functors *)
-module IncrementStack = Increment (Mystack)
 let stack = Mystack.stack_of_list [3 ; 5 ; 1 ; 2];;
-assert (IncrementStack.go stack |> Mystack.list_of_stack = [4 ; 6 ; 2; 3]);;
+assert (Mystack.fmap ((+) 1) stack |> Mystack.list_of_stack = [4 ; 6 ; 2; 3]);;
 
 (* An either module *)
 module Either (Config: sig type t end) = struct
@@ -47,7 +38,6 @@ end
 
 (* Why can't I combine these two lines? *)
 module EitherString = Either (struct type t = string end)
-module IncrementEither = Increment (EitherString)
 
 let get_age_either = function
   | "Jordan" -> EitherString.Right 25
@@ -55,7 +45,7 @@ let get_age_either = function
   | "Jake" -> EitherString.Right 1
   | _ -> EitherString.Left "User not found :("
 
-let age_next_year_either = IncrementEither.go
+let age_next_year_either = EitherString.fmap ((+) 1)
 
 let string_of_age_either = function
   | EitherString.Left e -> e
