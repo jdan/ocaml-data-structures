@@ -156,9 +156,11 @@ all:: .depend.input .depend $(EXEC)
 
 opt : $(EXEC).opt
 
-.PHONY: test
+.PHONY: test docs
 test: $(EXEC)
 	@./$(EXEC) && echo "All tests pass"
+docs: $(EXEC)
+	ocamldoc -I src -html -rectypes -d docs $(SOURCES)
 
 #ocamlc -custom other options graphics.cma other files -cclib -lgraphics -cclib -lX11
 #ocamlc -thread -custom other options threads.cma other files -cclib -lthreads

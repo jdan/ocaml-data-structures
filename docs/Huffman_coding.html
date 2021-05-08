@@ -1,0 +1,121 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<link rel="stylesheet" href="style.css" type="text/css">
+<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="Start" href="index.html">
+<link rel="previous" href="Binary_heap_test.html">
+<link rel="next" href="Huffman_coding_test.html">
+<link rel="Up" href="index.html">
+<link title="Index of types" rel=Appendix href="index_types.html">
+<link title="Index of values" rel=Appendix href="index_values.html">
+<link title="Index of modules" rel=Appendix href="index_modules.html">
+<link title="Index of module types" rel=Appendix href="index_module_types.html">
+<link title="Ord" rel="Chapter" href="Ord.html">
+<link title="Mystack" rel="Chapter" href="Mystack.html">
+<link title="Mystack_test" rel="Chapter" href="Mystack_test.html">
+<link title="Trie" rel="Chapter" href="Trie.html">
+<link title="Trie_test" rel="Chapter" href="Trie_test.html">
+<link title="Setoid" rel="Chapter" href="Setoid.html">
+<link title="Setoid_test" rel="Chapter" href="Setoid_test.html">
+<link title="Functor" rel="Chapter" href="Functor.html">
+<link title="Functor_test" rel="Chapter" href="Functor_test.html">
+<link title="Algebra" rel="Chapter" href="Algebra.html">
+<link title="Algebra_test" rel="Chapter" href="Algebra_test.html">
+<link title="Myqueue" rel="Chapter" href="Myqueue.html">
+<link title="Myqueue_test" rel="Chapter" href="Myqueue_test.html">
+<link title="Finite_state_machine" rel="Chapter" href="Finite_state_machine.html">
+<link title="Finite_state_machine_test" rel="Chapter" href="Finite_state_machine_test.html">
+<link title="Wire" rel="Chapter" href="Wire.html">
+<link title="Wire_test" rel="Chapter" href="Wire_test.html">
+<link title="Binary_search_tree" rel="Chapter" href="Binary_search_tree.html">
+<link title="Binary_search_tree_test" rel="Chapter" href="Binary_search_tree_test.html">
+<link title="Red_black_tree" rel="Chapter" href="Red_black_tree.html">
+<link title="Red_black_tree_test" rel="Chapter" href="Red_black_tree_test.html">
+<link title="Levenshtein" rel="Chapter" href="Levenshtein.html">
+<link title="Levenshtein_test" rel="Chapter" href="Levenshtein_test.html">
+<link title="Binary_heap" rel="Chapter" href="Binary_heap.html">
+<link title="Binary_heap_test" rel="Chapter" href="Binary_heap_test.html">
+<link title="Huffman_coding" rel="Chapter" href="Huffman_coding.html">
+<link title="Huffman_coding_test" rel="Chapter" href="Huffman_coding_test.html"><title>Huffman_coding</title>
+</head>
+<body>
+<div class="navbar"><a class="pre" href="Binary_heap_test.html" title="Binary_heap_test">Previous</a>
+&nbsp;<a class="up" href="index.html" title="Index">Up</a>
+&nbsp;<a class="post" href="Huffman_coding_test.html" title="Huffman_coding_test">Next</a>
+</div>
+<h1>Module <a href="type_Huffman_coding.html">Huffman_coding</a></h1>
+
+<pre><span id="MODULEHuffman_coding"><span class="keyword">module</span> Huffman_coding</span>: <code class="code">sig</code> <a href="Huffman_coding.html">..</a> <code class="code">end</code></pre><hr width="100%">
+
+<pre><code><span id="TYPEt"><span class="keyword">type</span> <code class="type"></code>t</span> = </code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTt.Leaf"><span class="constructor">Leaf</span></span> <span class="keyword">of</span> <code>{</code><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTHuffman_coding.Leaf.weight">weight</span>&nbsp;: <code class="type">int</code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTHuffman_coding.Leaf.char">char</span>&nbsp;: <code class="type">char</code>;</code></td>
+
+</tr></table>
+<code>}</code>
+</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTt.Node"><span class="constructor">Node</span></span> <span class="keyword">of</span> <code>{</code><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTHuffman_coding.Node.weight">weight</span>&nbsp;: <code class="type">int</code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTHuffman_coding.Node.left">left</span>&nbsp;: <code class="type"><a href="Huffman_coding.html#TYPEt">t</a></code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTHuffman_coding.Node.right">right</span>&nbsp;: <code class="type"><a href="Huffman_coding.html#TYPEt">t</a></code>;</code></td>
+
+</tr></table>
+<code>}</code>
+</code></td>
+
+</tr></table>
+
+
+
+<pre><span id="VALweight"><span class="keyword">val</span> weight</span> : <code class="type"><a href="Huffman_coding.html#TYPEt">t</a> -> int</code></pre>
+<pre><span id="MODULENodeMinHeap"><span class="keyword">module</span> <a href="Huffman_coding.NodeMinHeap.html">NodeMinHeap</a></span>: <code class="type"><a href="Binary_heap.BinaryHeap.html">Binary_heap.BinaryHeap</a></code><code class="code">(</code><code class="code">sig</code></pre><div class="sig_block">
+<pre><span id="TYPEt"><span class="keyword">type</span> <code class="type"></code>t</span> = <code class="type"><a href="Huffman_coding.html#TYPEt">Huffman_coding.t</a></code> </pre>
+
+
+<pre><span id="VALcompare"><span class="keyword">val</span> compare</span> : <code class="type">t -> t -> int</code></pre>
+<pre><span id="VALshow"><span class="keyword">val</span> show</span> : <code class="type">t -> string</code></pre></div>
+<pre><code class="code">end</code><code class="code">)</code></pre>
+<pre><span id="VALfrequency"><span class="keyword">val</span> frequency</span> : <code class="type">string -> (char, int) Stdlib.Hashtbl.t</code></pre>
+<pre><span id="VALcode_tree"><span class="keyword">val</span> code_tree</span> : <code class="type">string -> <a href="Huffman_coding.html#TYPEt">t</a></code></pre>
+<pre><span id="VALbuild_dictionary"><span class="keyword">val</span> build_dictionary</span> : <code class="type"><a href="Huffman_coding.html#TYPEt">t</a> -> (char * int list) list</code></pre>
+<pre><span id="VALencode"><span class="keyword">val</span> encode</span> : <code class="type">string -> (char * 'a list) list -> 'a list</code></pre>
+<pre><span id="VALdecode"><span class="keyword">val</span> decode</span> : <code class="type"><a href="Huffman_coding.html#TYPEt">t</a> -> int list -> char list</code></pre></body></html>

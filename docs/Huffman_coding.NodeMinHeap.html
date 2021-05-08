@@ -1,0 +1,76 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<link rel="stylesheet" href="style.css" type="text/css">
+<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="Start" href="index.html">
+<link rel="Up" href="Huffman_coding.html">
+<link title="Index of types" rel=Appendix href="index_types.html">
+<link title="Index of values" rel=Appendix href="index_values.html">
+<link title="Index of modules" rel=Appendix href="index_modules.html">
+<link title="Index of module types" rel=Appendix href="index_module_types.html">
+<link title="Ord" rel="Chapter" href="Ord.html">
+<link title="Mystack" rel="Chapter" href="Mystack.html">
+<link title="Mystack_test" rel="Chapter" href="Mystack_test.html">
+<link title="Trie" rel="Chapter" href="Trie.html">
+<link title="Trie_test" rel="Chapter" href="Trie_test.html">
+<link title="Setoid" rel="Chapter" href="Setoid.html">
+<link title="Setoid_test" rel="Chapter" href="Setoid_test.html">
+<link title="Functor" rel="Chapter" href="Functor.html">
+<link title="Functor_test" rel="Chapter" href="Functor_test.html">
+<link title="Algebra" rel="Chapter" href="Algebra.html">
+<link title="Algebra_test" rel="Chapter" href="Algebra_test.html">
+<link title="Myqueue" rel="Chapter" href="Myqueue.html">
+<link title="Myqueue_test" rel="Chapter" href="Myqueue_test.html">
+<link title="Finite_state_machine" rel="Chapter" href="Finite_state_machine.html">
+<link title="Finite_state_machine_test" rel="Chapter" href="Finite_state_machine_test.html">
+<link title="Wire" rel="Chapter" href="Wire.html">
+<link title="Wire_test" rel="Chapter" href="Wire_test.html">
+<link title="Binary_search_tree" rel="Chapter" href="Binary_search_tree.html">
+<link title="Binary_search_tree_test" rel="Chapter" href="Binary_search_tree_test.html">
+<link title="Red_black_tree" rel="Chapter" href="Red_black_tree.html">
+<link title="Red_black_tree_test" rel="Chapter" href="Red_black_tree_test.html">
+<link title="Levenshtein" rel="Chapter" href="Levenshtein.html">
+<link title="Levenshtein_test" rel="Chapter" href="Levenshtein_test.html">
+<link title="Binary_heap" rel="Chapter" href="Binary_heap.html">
+<link title="Binary_heap_test" rel="Chapter" href="Binary_heap_test.html">
+<link title="Huffman_coding" rel="Chapter" href="Huffman_coding.html">
+<link title="Huffman_coding_test" rel="Chapter" href="Huffman_coding_test.html"><title>Huffman_coding.NodeMinHeap</title>
+</head>
+<body>
+<div class="navbar">&nbsp;<a class="up" href="Huffman_coding.html" title="Huffman_coding">Up</a>
+&nbsp;</div>
+<h1>Module <a href="type_Huffman_coding.NodeMinHeap.html">Huffman_coding.NodeMinHeap</a></h1>
+
+<pre><span id="MODULENodeMinHeap"><span class="keyword">module</span> NodeMinHeap</span>: <code class="type"><a href="Binary_heap.BinaryHeap.html">Binary_heap.BinaryHeap</a></code><code class="code">(</code><code class="code">sig</code></pre><div class="sig_block">
+<pre><span id="TYPEt"><span class="keyword">type</span> <code class="type"></code>t</span> = <code class="type"><a href="Huffman_coding.html#TYPEt">Huffman_coding.t</a></code> </pre>
+
+
+<pre><span id="VALcompare"><span class="keyword">val</span> compare</span> : <code class="type">t -> t -> int</code></pre>
+<pre><span id="VALshow"><span class="keyword">val</span> show</span> : <code class="type">t -> string</code></pre></div>
+<pre><code class="code">end</code><code class="code">)</code></pre><hr width="100%">
+
+<pre><code><span id="TYPEt"><span class="keyword">type</span> <code class="type"></code>t</span> = {</code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTt.heap">heap</span>&nbsp;: <code class="type">heap</code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTt.index">index</span>&nbsp;: <code class="type">int</code>;</code></td>
+
+</tr></table>
+<code>}</code>
+
+
+
+<pre><span class="keyword">include</span> struct ... end</pre>
+
+<pre><span id="VALpeek"><span class="keyword">val</span> peek</span> : <code class="type"><a href="Binary_heap.BinaryHeap.html#TYPEt">t</a> -> Ord.t option</code></pre>
+<pre><span id="VALextract"><span class="keyword">val</span> extract</span> : <code class="type"><a href="Binary_heap.BinaryHeap.html#TYPEt">t</a> -> Ord.t option * <a href="Binary_heap.BinaryHeap.html#TYPEt">t</a></code></pre></body></html>

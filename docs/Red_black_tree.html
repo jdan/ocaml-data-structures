@@ -1,0 +1,138 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<link rel="stylesheet" href="style.css" type="text/css">
+<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="Start" href="index.html">
+<link rel="previous" href="Binary_search_tree_test.html">
+<link rel="next" href="Red_black_tree_test.html">
+<link rel="Up" href="index.html">
+<link title="Index of types" rel=Appendix href="index_types.html">
+<link title="Index of values" rel=Appendix href="index_values.html">
+<link title="Index of modules" rel=Appendix href="index_modules.html">
+<link title="Index of module types" rel=Appendix href="index_module_types.html">
+<link title="Ord" rel="Chapter" href="Ord.html">
+<link title="Mystack" rel="Chapter" href="Mystack.html">
+<link title="Mystack_test" rel="Chapter" href="Mystack_test.html">
+<link title="Trie" rel="Chapter" href="Trie.html">
+<link title="Trie_test" rel="Chapter" href="Trie_test.html">
+<link title="Setoid" rel="Chapter" href="Setoid.html">
+<link title="Setoid_test" rel="Chapter" href="Setoid_test.html">
+<link title="Functor" rel="Chapter" href="Functor.html">
+<link title="Functor_test" rel="Chapter" href="Functor_test.html">
+<link title="Algebra" rel="Chapter" href="Algebra.html">
+<link title="Algebra_test" rel="Chapter" href="Algebra_test.html">
+<link title="Myqueue" rel="Chapter" href="Myqueue.html">
+<link title="Myqueue_test" rel="Chapter" href="Myqueue_test.html">
+<link title="Finite_state_machine" rel="Chapter" href="Finite_state_machine.html">
+<link title="Finite_state_machine_test" rel="Chapter" href="Finite_state_machine_test.html">
+<link title="Wire" rel="Chapter" href="Wire.html">
+<link title="Wire_test" rel="Chapter" href="Wire_test.html">
+<link title="Binary_search_tree" rel="Chapter" href="Binary_search_tree.html">
+<link title="Binary_search_tree_test" rel="Chapter" href="Binary_search_tree_test.html">
+<link title="Red_black_tree" rel="Chapter" href="Red_black_tree.html">
+<link title="Red_black_tree_test" rel="Chapter" href="Red_black_tree_test.html">
+<link title="Levenshtein" rel="Chapter" href="Levenshtein.html">
+<link title="Levenshtein_test" rel="Chapter" href="Levenshtein_test.html">
+<link title="Binary_heap" rel="Chapter" href="Binary_heap.html">
+<link title="Binary_heap_test" rel="Chapter" href="Binary_heap_test.html">
+<link title="Huffman_coding" rel="Chapter" href="Huffman_coding.html">
+<link title="Huffman_coding_test" rel="Chapter" href="Huffman_coding_test.html"><title>Red_black_tree</title>
+</head>
+<body>
+<div class="navbar"><a class="pre" href="Binary_search_tree_test.html" title="Binary_search_tree_test">Previous</a>
+&nbsp;<a class="up" href="index.html" title="Index">Up</a>
+&nbsp;<a class="post" href="Red_black_tree_test.html" title="Red_black_tree_test">Next</a>
+</div>
+<h1>Module <a href="type_Red_black_tree.html">Red_black_tree</a></h1>
+
+<pre><span id="MODULERed_black_tree"><span class="keyword">module</span> Red_black_tree</span>: <code class="code">sig</code> <a href="Red_black_tree.html">..</a> <code class="code">end</code></pre><hr width="100%">
+
+<pre><span id="MODULERedBlackTree"><span class="keyword">module</span> <a href="Red_black_tree.RedBlackTree.html">RedBlackTree</a></span>: <div class="sig_block"><code class="code">functor (</code><code class="code">Ord</code><code class="code"> : </code><code class="type"><a href="Ord.S.html">Ord.S</a></code><code class="code">) -&gt; </code><code class="type"><a href="Binary_search_tree.Make.html">Binary_search_tree.Make</a></code><code class="code">(</code><code class="type"><a href="Ord.html">Ord</a></code><code class="code">)</code><code class="code">(</code><code class="code">sig</code></pre><div class="sig_block">
+<pre><code><span id="TYPEcolor"><span class="keyword">type</span> <code class="type"></code>color</span> = </code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTcolor.Red"><span class="constructor">Red</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTcolor.Black"><span class="constructor">Black</span></span></code></td>
+
+</tr></table>
+
+
+
+<pre><code><span id="TYPEt"><span class="keyword">type</span> <code class="type"></code>t</span> = </code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTt.Empty"><span class="constructor">Empty</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTt.Node"><span class="constructor">Node</span></span> <span class="keyword">of</span> <code>{</code><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span class="keyword">mutable&nbsp;</span><span id="TYPEELTRed_black_tree.RedBlackTree.Node.color">color</span>&nbsp;: <code class="type">color</code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTRed_black_tree.RedBlackTree.Node.value">value</span>&nbsp;: <code class="type">Ord.t</code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span class="keyword">mutable&nbsp;</span><span id="TYPEELTRed_black_tree.RedBlackTree.Node.parent">parent</span>&nbsp;: <code class="type">t</code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span class="keyword">mutable&nbsp;</span><span id="TYPEELTRed_black_tree.RedBlackTree.Node.left">left</span>&nbsp;: <code class="type">t</code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span class="keyword">mutable&nbsp;</span><span id="TYPEELTRed_black_tree.RedBlackTree.Node.right">right</span>&nbsp;: <code class="type">t</code>;</code></td>
+
+</tr></table>
+<code>}</code>
+</code></td>
+
+</tr></table>
+
+
+
+<pre><span id="VALempty_tree"><span class="keyword">val</span> empty_tree</span> : <code class="type">t</code></pre>
+<pre><span id="VALleft"><span class="keyword">val</span> left</span> : <code class="type">t -> t</code></pre>
+<pre><span id="VALright"><span class="keyword">val</span> right</span> : <code class="type">t -> t</code></pre>
+<pre><span id="VALvalue"><span class="keyword">val</span> value</span> : <code class="type">t -> Ord.t</code></pre>
+<pre><span id="VALget_parent"><span class="keyword">val</span> get_parent</span> : <code class="type">t -> t</code></pre>
+<pre><span id="VALget_grand_parent"><span class="keyword">val</span> get_grand_parent</span> : <code class="type">t -> t</code></pre>
+<pre><span id="VALget_uncle"><span class="keyword">val</span> get_uncle</span> : <code class="type">t -> t</code></pre>
+<pre><span id="VALrotate_left"><span class="keyword">val</span> rotate_left</span> : <code class="type">t -> unit</code></pre>
+<pre><span id="VALrotate_right"><span class="keyword">val</span> rotate_right</span> : <code class="type">t -> unit</code></pre>
+<pre><span id="VALrebalance"><span class="keyword">val</span> rebalance</span> : <code class="type">t -> t</code></pre>
+<pre><span id="VALroot_of_node"><span class="keyword">val</span> root_of_node</span> : <code class="type">t -> t</code></pre>
+<pre><span id="VALinsert"><span class="keyword">val</span> insert</span> : <code class="type">t -> Ord.t -> t</code></pre></div>
+<pre><code class="code">end</code><code class="code">)</code></div></pre></body></html>
